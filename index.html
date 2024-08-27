@@ -142,10 +142,10 @@
     <section>
       <h2>최근 게시물</h2>
       <ul>
-        {% for post in site.posts %}
+        {% for post in site.posts limit:5 %}
           <li>
             <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-            <p>{{ post.excerpt }}</p>
+            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
           </li>
         {% endfor %}
