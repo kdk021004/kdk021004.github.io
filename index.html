@@ -1,155 +1,104 @@
 ---
+layout: default
 title: Home
 ---
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>내 멋진 블로그</title>
-  <style>
-    /* 기본 스타일 초기화 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<section class="hero">
+  <div class="container">
 
-    body {
-      font-family: 'Arial', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f4f4f4;
-      padding: 20px;
-    }
+    <p class="hero-label">
+      kdg021004 · Software & AI Developer
+    </p>
 
-    /* 헤더 스타일 */
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+    <h1>
+      Building,<br>
+      Learning, Sharing.
+    </h1>
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: #333;
-    }
+    <p class="hero-description">
+      소프트웨어와 AI를 공부하며,
+      직접 만들고 해결한 문제들을 기록합니다.
+      프로젝트 경험과 개발 과정에서 배운 내용을 공유합니다.
+    </p>
 
-    header p {
-      font-size: 1.2rem;
-      color: #666;
-    }
+    <div class="hero-actions">
+      <a
+        class="button button-primary"
+        href="{{ '/projects/' | relative_url }}"
+      >
+        프로젝트 보기
+      </a>
 
-    /* 메인 섹션 스타일 */
-    main h2 {
-      font-size: 2rem;
-      color: #333;
-      margin-bottom: 20px;
-    }
+      <a
+        class="button button-secondary"
+        href="https://github.com/kdg021004"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+    </div>
 
-    main ul {
-      list-style: none;
-    }
+  </div>
+</section>
 
-    main li {
-      margin-bottom: 20px;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
 
-    main h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
+<section class="section">
+  <div class="container">
 
-    main p {
-      font-size: 1rem;
-      color: #555;
-    }
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <p>주요 프로젝트와 개발 경험입니다.</p>
+    </div>
 
-    main time {
-      font-size: 0.9rem;
-      color: #999;
-    }
+    <div class="project-grid">
+      {% assign featured_projects =
+        site.projects | where: "featured", true %}
 
-    /* 프로젝트 섹션 스타일 */
-    main section {
-      margin-bottom: 40px;
-    }
+      {% for project in featured_projects %}
+        <a
+          class="project-card"
+          href="{{ project.url | relative_url }}"
+        >
+          <h3>{{ project.title }}</h3>
 
-    main section h2 {
-      font-size: 2rem;
-      color: #333;
-      margin-bottom: 20px;
-    }
+          <p>{{ project.description }}</p>
 
-    main section ul {
-      list-style: none;
-    }
+          <p class="project-tech">
+            {{ project.tech }}
+          </p>
+        </a>
+      {% endfor %}
+    </div>
 
-    main section li {
-      margin-bottom: 10px;
-    }
+  </div>
+</section>
 
-    main section a {
-      font-size: 1.2rem;
-      color: #007acc;
-    }
 
-    main section a:hover {
-      text-decoration: underline;
-    }
+<section class="section">
+  <div class="container">
 
-    /* 링크 스타일 */
-    a {
-      color: #007acc;
-      text-decoration: none;
-    }
+    <div class="section-header">
+      <h2>Recent Posts</h2>
+      <p>최근 작성한 개발 기록입니다.</p>
+    </div>
 
-    a:hover {
-      text-decoration: underline;
-    }
+    <ul class="post-list">
+      {% for post in site.posts limit:5 %}
+        <li class="post-item">
+          <a
+            class="post-item-title"
+            href="{{ post.url | relative_url }}"
+          >
+            {{ post.title }}
+          </a>
 
-    /* 푸터 스타일 */
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
-    }
+          <time class="post-date">
+            {{ post.date | date: "%Y.%m.%d" }}
+          </time>
+        </li>
+      {% endfor %}
+    </ul>
 
-    footer p {
-      font-size: 0.9rem;
-      color: #666;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1><a href="{{ site.url }}">kdk021004's 블로그</a></h1>
-    <p>개발, 기술, 그리고 나의 이야기</p>
-  </header>
-
-  <main>
-    <section>
-      <h2>최근 게시물</h2>
-      <ul>
-        {% for post in site.posts limit:5 %}
-          <li>
-            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-          </li>
-        {% endfor %}
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; {{ site.time | date: '%Y' }} 김도근. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+  </div>
+</section>
