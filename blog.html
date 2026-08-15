@@ -1,0 +1,40 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <h1>Blog</h1>
+
+      <p>
+        개발하면서 배우고 고민한 내용을 기록합니다.
+      </p>
+    </div>
+
+    <ul class="post-list">
+
+      {% for post in site.posts %}
+        <li class="post-item">
+
+          <a
+            class="post-item-title"
+            href="{{ post.url | relative_url }}"
+          >
+            {{ post.title }}
+          </a>
+
+          <time class="post-date">
+            {{ post.date | date: "%Y.%m.%d" }}
+          </time>
+
+        </li>
+      {% endfor %}
+
+    </ul>
+
+  </div>
+</section>
