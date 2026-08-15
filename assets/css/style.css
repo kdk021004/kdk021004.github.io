@@ -1,135 +1,317 @@
-/* 기본 스타일 초기화 */
+/* Reset */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-    padding: 20px;
-  }
-  
-  /* 헤더 스타일 */
-  header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  header p {
-    font-size: 1.2rem;
-    color: #666;
-  }
-  
-  /* 메인 섹션 스타일 */
-  main h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  main ul {
-    list-style: none;
-  }
-  
-  main li {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  main h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  main p {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  main time {
-    font-size: 0.9rem;
-    color: #999;
-  }
-  
-  /* 링크 스타일 */
-  a {
-    color: #007acc;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* 푸터 스타일 */
-  footer {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #ddd;
-  }
-  
-  footer p {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  /* 프로젝트 섹션 스타일 */
-main section {
-  margin-bottom: 40px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-main section h2 {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  background: #ffffff;
+  color: #18181b;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* Layout */
+
+.container {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+
+/* Header */
+
+.site-header {
+  border-bottom: 1px solid #e4e4e7;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.nav-container {
+  min-height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav a {
+  color: #52525b;
+  font-size: 0.95rem;
+}
+
+.nav a:hover {
+  color: #18181b;
+}
+
+
+/* Hero */
+
+.hero {
+  padding: 110px 0 90px;
+}
+
+.hero-label {
+  margin-bottom: 16px;
+
+  color: #52525b;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.hero h1 {
+  max-width: 800px;
+
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+.hero-description {
+  max-width: 620px;
+
+  margin-top: 28px;
+
+  color: #52525b;
+  font-size: 1.15rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 32px;
+}
+
+
+/* Buttons */
+
+.button {
+  display: inline-flex;
+
+  padding: 11px 18px;
+
+  border: 1px solid #18181b;
+  border-radius: 8px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.button-primary {
+  background: #18181b;
+  color: #ffffff;
+}
+
+.button-secondary {
+  background: #ffffff;
+}
+
+
+/* Sections */
+
+.section {
+  padding: 70px 0;
+}
+
+.section-header {
+  margin-bottom: 32px;
+}
+
+.section-header h1,
+.section-header h2 {
+  letter-spacing: -0.03em;
+}
+
+.section-header h2 {
   font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
 }
 
-main section ul {
+.section-header p {
+  margin-top: 8px;
+  color: #71717a;
+}
+
+
+/* Project Cards */
+
+.project-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 20px;
+}
+
+.project-card {
+  padding: 28px;
+
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: #a1a1aa;
+}
+
+.project-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+.project-card p {
+  color: #71717a;
+}
+
+.project-tech {
+  margin-top: 18px;
+
+  color: #52525b;
+  font-size: 0.85rem;
+}
+
+
+/* Posts */
+
+.post-list {
   list-style: none;
 }
 
-main section li {
-  margin-bottom: 10px;
+.post-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 20px 0;
+
+  border-bottom: 1px solid #e4e4e7;
 }
 
-main section a {
-  font-size: 1.2rem;
-  color: #007acc;
+.post-item-title {
+  font-weight: 600;
 }
 
-main section a:hover {
-  text-decoration: underline;
-}
+.post-date {
+  flex-shrink: 0;
 
-/* 블로그 포스트 스타일 */
-article h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-article p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-article time {
+  color: #a1a1aa;
   font-size: 0.9rem;
-  color: #999;
+}
+
+
+/* Content Pages */
+
+.page-content {
+  max-width: 760px;
+  padding: 80px 0;
+}
+
+.page-content h1 {
+  margin-bottom: 32px;
+
+  font-size: 3rem;
+  letter-spacing: -0.04em;
+}
+
+.page-content h2 {
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.page-content p {
   margin-bottom: 20px;
-  display: block;
+}
+
+
+/* Footer */
+
+.site-footer {
+  margin-top: 80px;
+  border-top: 1px solid #e4e4e7;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 32px 0;
+
+  color: #71717a;
+  font-size: 0.9rem;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px 0;
+  }
+
+  .nav {
+    width: 100%;
+
+    margin-top: 15px;
+
+    gap: 15px;
+
+    overflow-x: auto;
+  }
+
+  .hero {
+    padding: 70px 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .post-item {
+    flex-direction: column;
+    gap: 4px;
+  }
 }
