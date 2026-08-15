@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<article class="container page-content">
+
+  <header>
+    <p class="hero-label">
+      Project
+    </p>
+
+    <h1>
+      {{ page.title }}
+    </h1>
+
+    <p>
+      {{ page.description }}
+    </p>
+  </header>
+
+
+  {% if page.tech %}
+    <p class="project-tech">
+      <strong>Tech</strong><br>
+      {{ page.tech }}
+    </p>
+  {% endif %}
+
+
+  {% if page.github %}
+    <p>
+      <a
+        class="button button-secondary"
+        href="{{ page.github }}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub Repository ↗
+      </a>
+    </p>
+  {% endif %}
+
+
+  {{ content }}
+
+</article>
